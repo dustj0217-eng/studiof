@@ -395,7 +395,7 @@ export default function Home() {
             <p className="font-mono-forge text-xs tracking-widest mb-2" style={{ color: "#FF4D00" }}>Coming Soon</p>
             <h3 className="font-display tracking-wide mb-3" style={{ fontSize: "36px" }}>???</h3>
             <p className="text-xs leading-7" style={{ color: "#888" }}>
-              새로운 세계가 용광로 속에서 만들어지고 있습니다.
+              새로운 세계가 용광로 속에서 만들어지고 있습니다...
             </p>
           </div>
 
@@ -408,7 +408,7 @@ export default function Home() {
             <p className="font-mono-forge text-xs tracking-widest mb-2" style={{ color: "#FF4D00" }}>Coming Soon</p>
             <h3 className="font-display tracking-wide mb-3" style={{ fontSize: "36px" }}>???</h3>
             <p className="text-xs leading-7" style={{ color: "#888" }}>
-              또 다른 이야기가 시작될 준비를 하고 있습니다.
+              또 다른 이야기가 시작될 준비를 하고 있습니다...
             </p>
           </div>
         </div>
