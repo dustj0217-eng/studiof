@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 // ─── 이미지 placeholder ────────────────────────────────────────────────────
 function ImageSlot({
@@ -81,22 +82,24 @@ const GAMES = [
     title: "MONSTER\nMANSION",
     titleShort: "MONSTER MANSION",
     genre: "건물 경영 / 모험",
-    desc: "개성 넘치는 몬스터들이 살아가는 대저택을 경영하세요. 스튜디오 포지의 첫 번째 세계관.",
+    desc: "개성 넘치는 몬스터들이 살아가는 맨션의 건물주가 되어보세요.",
     href: "https://monstermansion.vercel.app/",
     dim: false,
     accentColor: "#FF4D00",
+    image: "/몬스터맨션.jpg",
   },
   {
     num: "02",
     status: "In Development",
     statusActive: false,
-    title: "POTION\nATELIER",
-    titleShort: "POTION ATELIER",
-    genre: "공방 경영 / 판타지",
-    desc: "마녀가 운영하는 포션 공방. 제조부터 온라인 쇼핑몰 운영까지—신비로운 상거래의 세계.",
+    title: "POTION\nONLINE",
+    titleShort: "POTION ONLINE",
+    genre: "공방 경영 / 이커머스 시뮬레이션",
+    desc: "요즘 MZ마녀 사이에서는 온라인 쇼핑몰이 유행?! 의뢰의 뜻을 파악하고, 포션을 만들어 팔아보세요.",
     href: "#",
     dim: true,
     accentColor: "#C084FC",
+    image: "/포션온라인.jpg",
   },
   {
     num: "03",
@@ -105,10 +108,11 @@ const GAMES = [
     title: "LABYRINTH\nCRETA",
     titleShort: "LABYRINTH: CRETA",
     genre: "던전 탐험 / TRPG",
-    desc: "크레타 신화에서 영감을 받은 미궁 공략. 전략과 이야기가 교차하는 탁상 RPG 세계.",
+    desc: "용광로에서 세계가 만들어지는중...",
     href: "#",
     dim: true,
     accentColor: "#60A5FA",
+    image: "/라비린스.jpg",
   },
 ];
 
@@ -619,10 +623,15 @@ export default function Home() {
 
                   {/* ── 게임 키아트 이미지 슬롯 ── */}
                   {/* 교체 시: <Image src={`/images/${game.slug}.jpg`} alt={game.titleShort} fill className="object-cover" /> */}
-                  <div className="game-img-wrap" style={{ marginBottom: "1.25rem" }}>
-                    <ImageSlot
-                      label={`${game.titleShort} — Key Art`}
-                      aspect="aspect-video"
+                  <div
+                    className="game-img-wrap"
+                    style={{ marginBottom: "1.25rem", position: "relative", width: "100%", aspectRatio: "16/9" }}
+                  >
+                    <Image
+                      src={game.image || "/fallback.jpg"}
+                      alt={game.titleShort}
+                      fill
+                      className="object-cover"
                     />
                   </div>
 
