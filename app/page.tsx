@@ -96,7 +96,7 @@ const GAMES = [
     titleShort: "POTION ONLINE",
     genre: "공방 경영 / 이커머스 시뮬레이션",
     desc: "요즘 MZ마녀 사이에서는 온라인 쇼핑몰이 유행?! 의뢰의 뜻을 파악하고, 포션을 만들어 팔아보세요.",
-    href: "#",
+    href: "https://potiononline.vercel.app/",
     dim: true,
     accentColor: "#C084FC",
     image: "/포션온라인.jpg",
