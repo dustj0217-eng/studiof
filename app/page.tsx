@@ -77,7 +77,7 @@ function Marquee({
 const GAMES = [
   {
     num: "01",
-    status: "Active IP",
+    status: "In Development",
     statusActive: true,
     title: "MONSTER\nMANSION",
     titleShort: "MONSTER MANSION",
@@ -91,7 +91,7 @@ const GAMES = [
   {
     num: "02",
     status: "In Development",
-    statusActive: false,
+    statusActive: true,
     title: "POTION\nONLINE",
     titleShort: "POTION ONLINE",
     genre: "공방 경영 / 이커머스 시뮬레이션",
@@ -103,7 +103,7 @@ const GAMES = [
   },
   {
     num: "03",
-    status: "In Development",
+    status: "Comming Soon",
     statusActive: false,
     title: "LABYRINTH\nCRETA",
     titleShort: "LABYRINTH: CRETA",
