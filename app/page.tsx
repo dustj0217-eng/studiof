@@ -96,7 +96,7 @@ const GAMES = [
     titleShort: "POTION ONLINE",
     genre: "공방 경영 / 이커머스 시뮬레이션",
     desc: "요즘 MZ마녀 사이에서는 온라인 쇼핑몰이 유행?! 의뢰의 뜻을 파악하고, 포션을 만들어 팔아보세요.",
-    href: "https://potiononline.vercel.app/",
+    href: "#",
     dim: true,
     accentColor: "#C084FC",
     image: "/포션온라인.jpg",
@@ -580,10 +580,6 @@ export default function Home() {
 
             {/* 스탯 */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem", justifyContent: "center" }}>
-              {/* ── 스튜디오 심볼 슬롯 ── */}
-              {/* 실제 로고로 교체 시: <Image src="/images/logo-symbol.png" alt="Studio Forge" width={120} height={120} /> */}
-              <ImageSlot label="Studio Symbol / Logo" aspect="aspect-square" className="max-w-[180px]" />
-
               {[
                 ["01", "Active IP"],
                 ["∞", "Worlds to Forge"],
@@ -763,76 +759,6 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          CONTACT
-      ══════════════════════════════════════════ */}
-      <section id="contact" style={{ background: "#0a0a0a", padding: "clamp(4rem, 8vw, 7rem) 0" }} className="forge-fade">
-        <div className="forge-container">
-          <p className="font-mono-forge" style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#FF4D00", display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
-            <span style={{ display: "block", width: 28, height: 1, background: "#FF4D00" }} />
-            Connect
-          </p>
-          <h2 className="font-display" style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", lineHeight: 0.95, letterSpacing: "0.03em", color: "#f5f2ee", marginBottom: "3.5rem" }}>
-            FOLLOW<br />US
-          </h2>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "clamp(2rem, 5vw, 5rem)" }}>
-            {/* SNS */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-              {[
-                { icon: "𝕏", platform: "X (Twitter)", handle: "@studioforge_kr", href: "#" },
-                { icon: "▶", platform: "YouTube", handle: "Studio Forge", href: "#" },
-                { icon: "◉", platform: "Instagram", handle: "@studioforge_kr", href: "#" },
-                { icon: "⬡", platform: "Discord", handle: "Studio Forge Community", href: "#" },
-              ].map((sns) => (
-                <a key={sns.platform} href={sns.href} className="sns-item">
-                  <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(255,255,255,0.05)", fontFamily: "'Space Mono', monospace", fontSize: "0.85rem", flexShrink: 0 }}>
-                    {sns.icon}
-                  </span>
-                  <span style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                    <span className="font-mono-forge" style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.08em" }}>{sns.platform}</span>
-                    <span className="font-mono-forge" style={{ fontSize: "0.6rem", color: "#555", marginTop: 2 }}>{sns.handle}</span>
-                  </span>
-                  <span style={{ color: "#444", fontSize: "0.85rem" }}>→</span>
-                </a>
-              ))}
-            </div>
-
-            {/* 이메일 */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-              <div>
-                <h3 className="font-display" style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "#f5f2ee", marginBottom: "1rem", letterSpacing: "0.05em" }}>
-                  GET IN<br />TOUCH
-                </h3>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.85, color: "#777", marginBottom: "1.5rem" }}>
-                  협업, 미디어, 기타 문의 사항이 있으시면<br />
-                  언제든지 연락주세요.
-                </p>
-                <a href="mailto:hello@studioforge.kr" className="email-link">
-                  → hello@studioforge.kr
-                </a>
-              </div>
-
-              {/* 게임 수 요약 카드 */}
-              <div style={{ border: "1px solid rgba(255,77,0,0.2)", padding: "1.5rem", marginTop: "0.5rem" }}>
-                <p className="font-mono-forge" style={{ fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#FF4D00", marginBottom: "1rem" }}>
-                  Currently Forging
-                </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  {GAMES.map((g) => (
-                    <div key={g.num} style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                      <span style={{ width: 6, height: 6, borderRadius: g.statusActive ? "50%" : "0%", background: g.statusActive ? "#22c55e" : g.accentColor, flexShrink: 0 }} />
-                      <span className="font-mono-forge" style={{ fontSize: "0.65rem", color: "#888", letterSpacing: "0.05em" }}>{g.titleShort}</span>
-                      <span className="font-mono-forge" style={{ fontSize: "0.55rem", color: "#444", marginLeft: "auto", letterSpacing: "0.1em", textTransform: "uppercase" }}>{g.status}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
           FOOTER
       ══════════════════════════════════════════ */}
       <footer style={{ background: "#060606", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
@@ -867,21 +793,6 @@ export default function Home() {
                 {GAMES.map((g) => (
                   <a key={g.num} href={g.href !== "#" ? g.href : undefined} className="footer-link" style={{ cursor: g.href === "#" ? "default" : "pointer", opacity: g.dim ? 0.4 : 1 }}>
                     {g.titleShort}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* 연락처 */}
-            <div>
-              <p className="font-mono-forge" style={{ fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "1rem" }}>Contact</p>
-              <a href="mailto:hello@studioforge.kr" className="footer-link" style={{ display: "block", marginBottom: "0.5rem" }}>hello@studioforge.kr</a>
-              <div style={{ display: "flex", gap: "0.75rem", marginTop: "1rem" }}>
-                {["𝕏", "▶", "◉", "⬡"].map((icon, i) => (
-                  <a key={i} href="#" className="font-mono-forge" style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", textDecoration: "none", transition: "color 0.2s" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#FF4D00")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.25)")}>
-                    {icon}
                   </a>
                 ))}
               </div>
