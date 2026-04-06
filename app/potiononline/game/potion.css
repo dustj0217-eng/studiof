@@ -1,0 +1,101 @@
+/*
+  포션 게임 전용 CSS — app/games/potion/layout.tsx 에서만 로드됩니다.
+  .potion-root 클래스로 스코핑되어 메인 사이트에 영향을 주지 않습니다.
+*/
+
+.potion-root {
+  /* 폰트 변수 */
+  --font-display: var(--font-cinzel), 'Cinzel Decorative', serif;
+  --font-serif: var(--font-crimson), 'Crimson Pro', serif;
+  --font-sans: var(--font-noto), 'Noto Sans KR', sans-serif;
+
+  /* 게임 컬러 팔레트 */
+  --ink: #1a1208;
+  --parchment: #f5ede8;
+  --parchment-2: #ede0c4;
+  --parchment-3: #d9c9a8;
+  --gold: #b8860b;
+  --gold-2: #d4a017;
+  --ember: #c8470a;
+  --forest: #2d5a27;
+  --purple: #4a1a6b;
+  --purple-2: #7b3fa0;
+  --teal: #1a5a5a;
+  --muted: #6b5a3e;
+  --danger: #8b1a1a;
+
+  /* 레이아웃 */
+  font-family: var(--font-sans);
+  font-weight: 300;
+  background: #f5f2ec;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+
+  /* 모바일 최적화 */
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+
+  /* 메인 사이트 레이아웃 리셋 */
+  isolation: isolate;
+}
+
+/* 스크롤바 숨김 */
+.potion-root *::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* 버튼 기본 리셋 */
+.potion-root button {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* 내부 스크롤 컨테이너 */
+.potion-root .potion-scroll {
+  height: 100dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* 애니메이션 */
+@keyframes potion-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes potion-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes potion-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+@keyframes potion-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0.15); }
+  50%       { box-shadow: 0 0 12px 3px rgba(212, 160, 23, 0.2); }
+}
+
+@keyframes bubble-up {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  50%  { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-20px) scale(1.2); }
+}
+
+.potion-root .bubble-anim       { animation: bubble-up 1.8s infinite ease-in-out; }
+.potion-root .bubble-anim-d1    { animation: bubble-up 1.8s 0.6s infinite ease-in-out; }
+.potion-root .bubble-anim-d2    { animation: bubble-up 1.8s 1.2s infinite ease-in-out; }
+.potion-root .potion-float      { animation: potion-float 3s infinite ease-in-out; }
+.potion-root .potion-pulse      { animation: potion-pulse 2s infinite ease-in-out; }
+.potion-root .potion-glow       { animation: potion-glow 2s infinite ease-in-out; }
+.potion-root .potion-fade-in    { animation: potion-fade-in 0.3s ease both; }
