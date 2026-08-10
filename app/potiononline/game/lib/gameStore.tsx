@@ -20,7 +20,7 @@ interface AppState {
   reviews: Review[];
   craft: CraftState;
   activeOrder: Order | null;
-  tab: 'orders' | 'craft' | 'manage' | 'reviews';
+  tab: 'home' | 'orders' | 'craft' | 'products' | 'customers' | 'my';
   orderModalId: number | null;
   showResultModal: boolean;
   consultationNotes: Record<number, string[]>;
@@ -65,7 +65,7 @@ const initialState: AppState = {
   reviews: INITIAL_REVIEWS,
   craft: { selectedIngredientIds: [], selectedMixId: null, selectedSpellId: null, currentResult: null },
   activeOrder: null,
-  tab: 'orders',
+  tab: 'home',
   orderModalId: null,
   showResultModal: false,
   consultationNotes: {},
@@ -202,7 +202,7 @@ function reducer(state: AppState, action: Action): AppState {
 
 const Ctx = createContext<{ state: AppState; dispatch: React.Dispatch<Action> } | null>(null);
 
-const SAVE_KEY = 'moncity:potion-online:v2';
+const SAVE_KEY = 'moncity:potion-online:v3';
 
 export function GameProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);

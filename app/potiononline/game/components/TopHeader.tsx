@@ -1,80 +1,9 @@
 'use client';
 import { useGame } from '../lib/gameStore';
-
-export default function TopHeader() {
-  const { state } = useGame();
-  const { gold, reputation, totalShipped } = state.game;
-
-  return (
-    <header className="header">
-      <div className="header-brand">
-        <span className="brand-mark">✦</span>
-        <span className="brand-name">POTION ONLINE</span>
-        <span className="brand-mark">✦</span>
-      </div>
-      <div className="header-stats">
-        <div className="hstat">
-          <span className="hstat-icon">🪙</span>
-          <span className="hstat-val">{gold.toLocaleString()}</span>
-        </div>
-        <div className="hstat-divider" />
-        <div className="hstat">
-          <span className="hstat-icon">⭐</span>
-          <span className="hstat-val">{reputation.toFixed(1)}</span>
-        </div>
-        <div className="hstat-divider" />
-        <div className="hstat">
-          <span className="hstat-icon">📦</span>
-          <span className="hstat-val">{totalShipped}</span>
-        </div>
-      </div>
-
-      <style jsx>{`
-        .header {
-          position: sticky;
-          top: 0;
-          z-index: 40;
-          background: #1a1208;
-          padding: 10px 16px 0;
-        }
-        .header-brand {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          padding-bottom: 8px;
-          border-bottom: 1px solid #2e2010;
-          font-family: 'Cinzel Decorative', serif;
-          color: #d4a017;
-          font-size: 13px;
-          letter-spacing: 3px;
-        }
-        .brand-mark { font-size: 10px; opacity: 0.7; }
-        .header-stats {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 16px;
-          padding: 8px 0;
-        }
-        .hstat {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-        }
-        .hstat-icon { font-size: 13px; }
-        .hstat-val {
-          font-size: 13px;
-          font-weight: 500;
-          color: #e0c888;
-          font-family: 'Noto Sans KR', sans-serif;
-        }
-        .hstat-divider {
-          width: 1px;
-          height: 14px;
-          background: #3a2d1a;
-        }
-      `}</style>
-    </header>
-  );
-}
+export default function TopHeader(){const {state,dispatch}=useGame();if(state.tab==='craft')return null;return <>
+<header className="seller-header">
+ <button className="brand" onClick={()=>dispatch({type:'SET_TAB',tab:'home'})}><span className="logo">P</span><span className="brand-copy"><b>POTION ONLINE</b><small>SELLER CENTER</small></span></button>
+ <div className="actions"><button aria-label="검색">⌕</button><button className="bell" aria-label="알림">♧<i/></button></div>
+</header>
+<div className="ticker"><b>★ STORE NOTICE</b><span>마야님의 스토어는 정상 운영중이에요</span><em>♡ NEW ORDER</em></div>
+<style jsx>{`.seller-header{height:61px;position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #ecd7e5;display:flex;align-items:center;justify-content:space-between;padding:0 15px}.brand{border:0;background:none;display:flex;align-items:center;gap:9px;padding:0;color:#32283a}.logo{width:32px;height:32px;border:2px solid #6e52c7;border-radius:9px;background:linear-gradient(145deg,#ffe5f2,#f0deff);box-shadow:3px 3px 0 #ffc1dc;display:grid;place-items:center;font-family:Arial Black,Arial;font-size:18px;color:#ff4f9f;transform:rotate(-2deg)}.brand-copy{text-align:left}.brand-copy b{display:block;font-family:Arial Black,Arial,sans-serif;font-size:14px;letter-spacing:-.03em;color:#563d72}.brand-copy small{display:block;font-size:7px;letter-spacing:.18em;color:#b08aa5;margin-top:1px}.actions{display:flex;gap:4px}.actions button{border:1px solid #ead7e5;background:#fff9fc;color:#6e5b6d;width:33px;height:33px;border-radius:10px;font-size:18px;position:relative}.bell i{position:absolute;width:7px;height:7px;background:#ff4f9f;border-radius:50%;right:5px;top:4px;border:2px solid white}.ticker{height:25px;background:#ffe4f1;border-bottom:1px solid #f2c9dd;display:flex;align-items:center;gap:9px;padding:0 12px;white-space:nowrap;overflow:hidden;font-size:8px;color:#806a7d}.ticker b{font-family:Arial Black,Arial;color:#7a55cc;font-size:7px;letter-spacing:.08em}.ticker span{overflow:hidden;text-overflow:ellipsis}.ticker em{font-style:normal;color:#ff3d8c;font-weight:900;margin-left:auto}`}</style></>}

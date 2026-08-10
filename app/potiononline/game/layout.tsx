@@ -32,7 +32,7 @@ const notoKR = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   title: 'Potion Online — 마야의 포션 쇼핑몰',
-  description: '포션을 제작하고 고객의 욕망을 해석하는 연금술 경영 시뮬레이션',
+  description: 'POTION ONLINE 판매자센터',
 };
 
 export default function PotionLayout({
