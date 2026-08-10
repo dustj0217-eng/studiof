@@ -80,8 +80,8 @@ export default function ReviewsPage() {
         </div>
         <div className="strip-div" />
         <div className="strip-item">
-          <span className="strip-val">Day {game.day}</span>
-          <span className="strip-label">영업일</span>
+          <span className="strip-val">Lv.{game.shopLevel}</span>
+          <span className="strip-label">가게 레벨</span>
         </div>
       </div>
 
