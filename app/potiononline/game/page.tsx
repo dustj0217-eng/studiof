@@ -14,6 +14,7 @@ import BottomNav from './components/BottomNav';
 import ShopPage from './components/shop/ShopPage';
 import CraftPage from './components/craft/CraftPage';
 import ReviewsPage from './components/craft/ReviewsPage';
+import ManagePage from './components/manage/ManagePage';
 
 function GameUI() {
   const { state } = useGame();
@@ -29,6 +30,9 @@ function GameUI() {
         </div>
         <div style={{ display: state.tab === 'craft' ? 'block' : 'none' }}>
           <CraftPage />
+        </div>
+        <div style={{ display: state.tab === 'manage' ? 'block' : 'none' }}>
+          <ManagePage />
         </div>
         <div style={{ display: state.tab === 'reviews' ? 'block' : 'none' }}>
           <ReviewsPage />

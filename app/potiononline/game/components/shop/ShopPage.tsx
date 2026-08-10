@@ -29,8 +29,8 @@ export default function ShopPage() {
           </div>
           <div className="hs-div" />
           <div className="hs-item">
-            <span className="hs-val">Day {game.day}</span>
-            <span className="hs-label">영업일</span>
+            <span className="hs-val">Lv.{game.shopLevel}</span>
+            <span className="hs-label">가게 레벨</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 'use client';
 import { useGame } from '../../lib/gameStore';
+import { getConsultationOptions } from '../../systems/consultationSystem';
 
 export default function OrderModal() {
   const { state, dispatch } = useGame();
@@ -8,6 +9,8 @@ export default function OrderModal() {
 
   const handleAccept = () => dispatch({ type: 'ACCEPT_ORDER', order });
   const handleClose = () => dispatch({ type: 'CLOSE_ORDER_MODAL' });
+  const consultationOptions = getConsultationOptions(order);
+  const notes = state.consultationNotes[order.id] ?? [];
 
   return (
     <>
@@ -50,6 +53,21 @@ export default function OrderModal() {
             ))}
           </div>
 
+          <div className="section-title">추가 상담 <span style={{fontWeight:400,color:'#b0a898'}}>· 남은 질문 {state.game.consultationCredits}</span></div>
+          <div className="consult-box">
+            {consultationOptions.map(opt => (
+              <button
+                key={opt.id}
+                className="consult-btn"
+                disabled={state.game.consultationCredits <= 0 || notes.includes(opt.answer)}
+                onClick={() => dispatch({ type: 'ASK_ORDER_QUESTION', orderId: order.id, answer: opt.answer })}
+              >
+                {opt.question}
+              </button>
+            ))}
+            {notes.map((note, index) => <div className="consult-note" key={index}>↳ {note}</div>)}
+          </div>
+
           {/* Warnings */}
           {order.warning && (
             <div className="warn-box">⚠️ 이 주문은 윤리적 판단이 필요합니다. 신중하게 결정하세요.</div>
@@ -61,7 +79,7 @@ export default function OrderModal() {
           <button className="accept-btn" onClick={handleAccept}>
             주문 수락 — 제작 시작하기
           </button>
-          <button className="decline-btn" onClick={handleClose}>거절</button>
+          <button className="decline-btn" onClick={() => dispatch({ type: 'DECLINE_ORDER', orderId: order.id })}>거절하고 다음 주문 받기</button>
         </div>
       </div>
 
@@ -164,6 +182,10 @@ export default function OrderModal() {
         }
         .tag.req { background: #f5f0e8; color: #5a4a2a; border: 1px solid #e0d4b8; }
         .tag.hidden { background: #1a1208; color: #d4a017; }
+        .consult-box { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+        .consult-btn { width:100%; text-align:left; padding:9px 10px; border:1px solid #e0d8c8; background:#faf8f4; border-radius:9px; font-size:11px; color:#4f4432; cursor:pointer; }
+        .consult-btn:disabled { opacity:.4; cursor:default; }
+        .consult-note { background:#f0f6eb; border-left:3px solid #88a66f; padding:8px 10px; border-radius:7px; font-size:11px; color:#526247; line-height:1.5; }
         .warn-box {
           background: #fff5f5; border: 1px solid #fcc;
           border-radius: 10px; padding: 10px 12px;

@@ -48,7 +48,7 @@ export default function CraftPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIngredientIds, selectedMixId, selectedSpellId]);
 
-  const canBrew = selectedIngredients.length > 0 && selectedMixId && selectedSpellId;
+  const canBrew = Boolean(state.activeOrder && selectedIngredients.length > 0 && selectedMixId && selectedSpellId);
 
   // Find partial secret combos for hints
   const comboHint = (() => {
@@ -161,6 +161,7 @@ export default function CraftPage() {
             <button
               key={ingr.id}
               className={`ingr-btn ${sel ? 'selected' : ''}`}
+              disabled={(state.game.inventory[ingr.id] ?? 0) <= 0}
               onClick={() => dispatch({ type: 'TOGGLE_INGREDIENT', id: ingr.id })}
             >
               {ingr.hasSecret && <div className="secret-dot" />}
@@ -175,7 +176,7 @@ export default function CraftPage() {
                   return <span key={t} className="mtag" style={{ background: bg, color: fg }}>{t}</span>;
                 })}
               </div>
-              <div className="ingr-price">{ingr.price}G</div>
+              <div className="ingr-price">재고 {state.game.inventory[ingr.id] ?? 0}</div>
             </button>
           );
         })}
@@ -220,7 +221,7 @@ export default function CraftPage() {
 
       {/* Brew button */}
       <button className="brew-btn" disabled={!canBrew} onClick={handleBrew}>
-        {canBrew ? '⚗ 포션 제조하기' : '재료·방식·주문을 선택하세요'}
+        {canBrew ? '⚗ 포션 제조하기' : state.activeOrder ? '재료·방식·주문을 선택하세요' : '주문을 먼저 수락하세요'}
       </button>
 
       <div style={{ height: 80 }} />
@@ -309,6 +310,7 @@ export default function CraftPage() {
         .mtag { font-size: 8px; padding: 1px 4px; border-radius: 6px; }
         .ingr-price { font-size: 9px; color: #6a5a3a; }
 
+        .ingr-btn:disabled { opacity:.35; filter:grayscale(.4); cursor:not-allowed; }
         .mix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
         .mix-btn {
           background: #ffeec2; border: 1px solid #1a2a1e;

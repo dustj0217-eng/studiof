@@ -8,6 +8,7 @@ export default function BottomNav() {
   const tabs = [
     { id: 'orders' as const, label: '주문함', icon: '📬', badge: newOrderCount },
     { id: 'craft' as const, label: '제작소', icon: '⚗️', badge: 0 },
+    { id: 'manage' as const, label: '운영', icon: '🏪', badge: 0 },
     { id: 'reviews' as const, label: '리뷰', icon: '📜', badge: 0 },
   ];
 

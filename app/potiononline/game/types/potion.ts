@@ -117,5 +117,10 @@ export interface GameState {
   activeOrderId: number | null;
   unlockedRecipes: string[];
   worldEffects: Record<string, number>;
-  day: number;
+  shopXp: number;
+  shopLevel: number;
+  inventory: Record<string, number>;
+  consultationCredits: number;
+  nextOrderSerial: number;
+  completedOrderIds: number[];
 }
